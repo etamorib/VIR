@@ -5,7 +5,7 @@ pipeline {
         maven 'maven3.8'
     }
     triggers {
-        pollSCM('')
+        githubPush()
     }
 
     stages {
