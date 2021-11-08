@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven "maven"
-        jdk "jdk11"
-    }
     triggers {
         pollSCM('')
     }
@@ -16,7 +12,7 @@ pipeline {
                 echo "M2_HOME = /opt/maven"
             }
         }
-        
+
         stage('Build') {
             steps {
                 sh 'mvn clean install'
