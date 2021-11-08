@@ -1,0 +1,68 @@
+version: "3.5"
+
+volumes:
+  mongo_db:
+  jenkins_home:
+
+networks:
+  vir_nw:
+
+secrets:
+  mongo_username:
+    file: ./mongo_username.txt
+  mongo_password:
+    file: ./mongo_password.txt
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongo_username
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo_password
+    networks:
+      - vir_nw
+    volumes:
+      - mongo_db:/var/lib/mongo
+    secrets:
+      - mongo_username
+      - mongo_password
+
+  vir-rest:
+    container_name: vir-rest
+    build:
+      context: ./vir-rest
+      dockerfile: Dockerfile
+    image: vir-rest:latest
+    depends_on:
+      - mongo
+    ports:
+      - "8081:8081"
+    networks:
+      - vir_nw
+
+  vir-client:
+    container_name: vir-client
+    build:
+      context: ./vir-client
+      dockerfile: Dockerfile
+    image: vir-client:latest
+    depends_on:
+      - vir-rest
+    networks:
+      - vir_nw
+
+  jenkins:
+    container_name: vir-jenkins
+    build:
+      context: ./Jenkins
+      dockerfile: Dockerfile
+    image: vir-jenkinst:latest
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+
+
+
