@@ -22,9 +22,9 @@ public class ResourceLoad implements Serializable {
     private double cpu;
     private double ram;
     private double disk;
-    private double network;
+    private long network;
 
-    public ResourceLoad(double cpu, double ram, double disk, double network) {
+    public ResourceLoad(double cpu, double ram, double disk, long network) {
         this.cpu = cpu;
         this.ram = ram;
         this.disk = disk;
