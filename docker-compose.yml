@@ -14,12 +14,15 @@ secrets:
     file: ./mongo_password.txt
 
 services:
-  mongo:
+  mongodb:
+    container_name: mongodb
     image: mongo
     restart: always
     environment:
       - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongo_username
       - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo_password
+    ports:
+      - "27017:27017"
     networks:
       - vir_nw
     volumes:
@@ -35,7 +38,7 @@ services:
       dockerfile: Dockerfile
     image: vir-rest:latest
     depends_on:
-      - mongo
+      - mongodb
     ports:
       - "8081:8081"
     networks:
