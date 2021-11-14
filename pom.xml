@@ -17,5 +17,6 @@
     <modules>
         <module>vir-rest</module>
         <module>vir-client</module>
+        <module>vir-webclient</module>
     </modules>
 </project>
