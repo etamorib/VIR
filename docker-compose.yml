@@ -44,17 +44,6 @@ services:
     networks:
       - vir_nw
 
-#  vir-client:
-#    container_name: vir-client
-#    build:
-#      context: ./vir-client
-#      dockerfile: Dockerfile
-#    image: vir-client:latest
-#    depends_on:
-#      - vir-rest
-#    networks:
-#      - vir_nw
-
   jenkins:
     container_name: vir-jenkins
     build:

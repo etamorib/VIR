@@ -6,11 +6,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.collections.FXCollections?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vir.bm.virclient.DashboardStageController"
             prefHeight="400.0" prefWidth="600.0">
-<Label text="dashboard">
+    <VBox>
+        <Label text="Choose sampling interval (seconds)"/>
+        <ComboBox fx:id="timeCombo" layoutX="15.0" layoutY="33.0" prefWidth="200.0" promptText="Interval">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <Double fx:value="10" />
+                    <Double fx:value="60" />
+                    <Double fx:value="300" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button fx:id="btnApply" text="Start" onMouseClicked="#btnApply">
 
-</Label>
+        </Button>
+        <VBox>
+            <ProgressBar fx:id="progressBar" prefWidth="300" prefHeight="50">
+
+            </ProgressBar>
+
+        </VBox>
+    </VBox>
+
 </AnchorPane>

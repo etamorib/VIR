@@ -9,11 +9,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: White;" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.vir.bm.virclient.StageController">
+<?import javafx.scene.control.ScrollPane?>
+<AnchorPane prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: White;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vir.bm.virclient.StageController">
     <children>
-        <AnchorPane prefHeight="46.0" prefWidth="1200.0" style="-fx-background-color: #002d40;">
+        <AnchorPane prefHeight="46.0" prefWidth="1500.0" style="-fx-background-color: #242f3e;">
             <children>
-                <Label fx:id="drawerImage" layoutX="7.0" layoutY="7.0">
+                <Label fx:id="drawerImage" layoutX="17.0" layoutY="7.0">
                     <graphic>
                         <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -25,9 +26,9 @@
             </children>
         </AnchorPane>
 
-        <AnchorPane layoutX="66.0" layoutY="46.0" prefHeight="754.0" prefWidth="1134.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane layoutX="66.0" layoutY="46.0" prefHeight="754.0" prefWidth="1434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Pane fx:id="contentPane" layoutY="21.0" prefHeight="754.0" prefWidth="1134.0" style="-fx-background-color: #d9ecf2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <Pane fx:id="contentPane" layoutY="21.0" prefHeight="754.0" prefWidth="1134.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="opacityPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

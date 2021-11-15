@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,11 @@ public class StageController implements Initializable {
 
     @Value("classpath:/dataStage.fxml")
     private Resource dataStage;
+    private ApplicationContext applicationContext;
+
+    public StageController(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -85,7 +91,9 @@ public class StageController implements Initializable {
 
     private void setContentResource(Resource resource) {
         try {
-            AnchorPane content = FXMLLoader.load(resource.getURL());
+            FXMLLoader fxmlLoader = new FXMLLoader(resource.getURL());
+            fxmlLoader.setControllerFactory(aClass -> applicationContext.getBean(aClass));
+            AnchorPane content = fxmlLoader.load();
             contentPane.getChildren().setAll(content);
         } catch (IOException | NullPointerException e) {
             e.printStackTrace();

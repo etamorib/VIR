@@ -6,9 +6,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vir.bm.virclient.DataStageController"
             prefHeight="400.0" prefWidth="600.0">
-<Label text="data"/>
+
+    <VBox layoutX="50">
+
+        <LineChart prefHeight="230" prefWidth="1200" fx:id="cpu">
+            <xAxis>
+                <CategoryAxis label="Time"/>
+            </xAxis>
+            <yAxis>
+                <CategoryAxis label="Load"/>
+            </yAxis>
+        </LineChart>
+
+        <LineChart prefHeight="230" fx:id="memory">
+            <xAxis>
+                <CategoryAxis label="Time"/>
+            </xAxis>
+            <yAxis>
+                <CategoryAxis label="Load"/>
+            </yAxis>
+        </LineChart>
+
+        <LineChart prefHeight="230" fx:id="disk">
+            <xAxis>
+                <CategoryAxis label="Time"/>
+            </xAxis>
+            <yAxis>
+                <CategoryAxis label="Load"/>
+            </yAxis>
+        </LineChart>
+    </VBox>
+
+
 </AnchorPane>
