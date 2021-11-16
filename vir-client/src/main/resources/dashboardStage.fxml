@@ -33,7 +33,7 @@
             </ProgressBar>
         </VBox>
 
-        <LineChart prefHeight="350" prefWidth="1200" fx:id="resourceChart" title="Live resource load">
+        <LineChart prefHeight="350" prefWidth="1300" fx:id="resourceChart" title="Live resource load">
             <xAxis>
                 <CategoryAxis label="Time"/>
             </xAxis>

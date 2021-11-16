@@ -36,7 +36,7 @@
         </Button>
         <Label fx:id="noRecordLabel" text="0 data found between this interval" visible="false"/>
 
-        <LineChart prefHeight="230" prefWidth="1200" fx:id="cpu" title="CPU usage">
+        <LineChart prefHeight="230" prefWidth="1300" fx:id="cpu" title="CPU usage">
             <xAxis>
                 <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
@@ -45,7 +45,7 @@
             </yAxis>
         </LineChart>
 
-        <LineChart prefHeight="230" fx:id="memory" title="RAM usage">
+        <LineChart prefHeight="230" prefWidth="1300" fx:id="memory" title="RAM usage">
             <xAxis>
                 <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
@@ -54,7 +54,7 @@
             </yAxis>
         </LineChart>
 
-        <LineChart prefHeight="230" fx:id="disk" title="Disk usage">
+        <LineChart prefHeight="230" prefWidth="1300" fx:id="disk" title="Disk usage">
             <xAxis>
                 <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
