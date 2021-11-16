@@ -7,14 +7,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import tornadofx.control.DateTimePicker;
 
-import java.util.function.Consumer;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Component
-public class DataStageController implements Consumer<ResourceLoad> {
+public class DataStageController {
 
     @FXML
     public LineChart<String, Double> cpu;
@@ -23,9 +27,15 @@ public class DataStageController implements Consumer<ResourceLoad> {
     @FXML
     public LineChart<String, Double> disk;
     @FXML
-    public DateTimePicker dateTimePicker;
+    public DateTimePicker firstDatePicker;
+    @FXML
+    public DateTimePicker secondDatePicker;
+    @FXML
+    public Label noRecordLabel;
     private WebClientResourceClient webClientResourceClient;
-    private ObservableList<XYChart.Data<String, Double>> seriesData = FXCollections.observableArrayList();
+    private ObservableList<XYChart.Data<String, Double>> cpuData = FXCollections.observableArrayList();
+    private ObservableList<XYChart.Data<String, Double>> ramData = FXCollections.observableArrayList();
+    private ObservableList<XYChart.Data<String, Double>> diskData = FXCollections.observableArrayList();
 
     public DataStageController() {}
 
@@ -36,15 +46,41 @@ public class DataStageController implements Consumer<ResourceLoad> {
 
     @FXML
     public void initialize() {
-        ObservableList<XYChart.Series<String, Double>> cpuData = FXCollections.observableArrayList();
-        cpuData.add(new XYChart.Series<>(seriesData));
-        cpu.setData(cpuData);
+        firstDatePicker.setDateTimeValue(LocalDateTime.now().minusDays(1));
+        secondDatePicker.setDateTimeValue(LocalDateTime.now());
 
     }
 
-    @Override
-    public void accept(ResourceLoad resourceLoad) {
+    public void fetchData(MouseEvent mouseEvent) {
+        redoCharts();
+        LocalDateTime firstDate = firstDatePicker.getDateTimeValue();
+        ObservableList<XYChart.Series<String, Double>> cpuSeries = FXCollections.observableArrayList();
+        ObservableList<XYChart.Series<String, Double>> ramSeries = FXCollections.observableArrayList();
+        ObservableList<XYChart.Series<String, Double>> diskSeries = FXCollections.observableArrayList();
+        cpuSeries.add(new XYChart.Series<>("CPU", this.cpuData));
+        ramSeries.add(new XYChart.Series<>("RAM", this.ramData));
+        diskSeries.add(new XYChart.Series<>("Disk", this.diskData));
+        LocalDateTime secondDate = secondDatePicker.getDateTimeValue();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String firstDateFormatted = firstDate.format(formatter);
+        String secondDateFormatted = secondDate.format(formatter);
+        List<ResourceLoad> list = webClientResourceClient.getAllBetween(firstDateFormatted, secondDateFormatted).collectList().block();
+        if (list != null && list.size() > 0) {
+            list.forEach(resourceLoad -> {
+                cpuData.add(new XYChart.Data<>(resourceLoad.getTime().format(formatter), resourceLoad.getCpu()));
+                ramData.add(new XYChart.Data<>(resourceLoad.getTime().format(formatter), resourceLoad.getRam()));
+                diskData.add(new XYChart.Data<>(resourceLoad.getTime().format(formatter), resourceLoad.getDisk()));
+            });
+            cpu.setData(cpuSeries);
+            memory.setData(ramSeries);
+            disk.setData(diskSeries);
+        }
+    }
 
+    private void redoCharts() {
+        cpuData.clear();
+        ramData.clear();
+        diskData.clear();
     }
 }
 

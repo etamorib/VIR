@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.ScrollPane?>
-<AnchorPane prefHeight="800.0" prefWidth="1500.0" style="-fx-background-color: White;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vir.bm.virclient.StageController">
+<AnchorPane prefHeight="1000.0" prefWidth="1500.0" style="-fx-background-color: White;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vir.bm.virclient.StageController">
     <children>
         <AnchorPane prefHeight="46.0" prefWidth="1500.0" style="-fx-background-color: #242f3e;">
             <children>
@@ -26,13 +26,13 @@
             </children>
         </AnchorPane>
 
-        <AnchorPane layoutX="66.0" layoutY="46.0" prefHeight="754.0" prefWidth="1434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <AnchorPane layoutX="66.0" layoutY="46.0" prefHeight="954.0" prefWidth="1434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <Pane fx:id="contentPane" layoutY="21.0" prefHeight="754.0" prefWidth="1134.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <Pane fx:id="contentPane" layoutY="21.0" prefHeight="954.0" prefWidth="1134.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
         <AnchorPane fx:id="opacityPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-        <AnchorPane fx:id="drawerPane" prefHeight="754.0" prefWidth="178.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0">
+        <AnchorPane fx:id="drawerPane" prefHeight="954.0" prefWidth="178.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="40.0">
             <children>
                 <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
                     <children>
@@ -51,7 +51,7 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <AnchorPane prefHeight="754.0" prefWidth="66.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0">
+        <AnchorPane prefHeight="954.0" prefWidth="66.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0">
             <children>
                 <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="66.0" spacing="10.0" style="-fx-background-color: white;" AnchorPane.topAnchor="20.0">
                     <children>

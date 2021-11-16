@@ -82,18 +82,20 @@ public class DashboardStageController implements Initializable, Consumer<Resourc
 
     public void btnApply(MouseEvent mouseEvent) {
         measure = !measure;
-        if (measure) {
-            btnApply.setText("Stop");
-            Double second = (Double) timeCombo.getValue();
-            progressBar.setVisible(true);
-            setProgressBarInterval(second);
-            timeline.play();
-        } else {
-            btnApply.setText("Start");
-            progressBar.setVisible(false);
-            resourceChart.setData(null);
-            resourceChart.setVisible(false);
-            timeline.stop();
+        if (timeCombo.getValue() != null) {
+            if (measure) {
+                btnApply.setText("Stop");
+                Double second = (Double) timeCombo.getValue();
+                progressBar.setVisible(true);
+                setProgressBarInterval(second);
+                timeline.play();
+            } else {
+                btnApply.setText("Start");
+                progressBar.setVisible(false);
+                resourceChart.setData(null);
+                resourceChart.setVisible(false);
+                timeline.stop();
+            }
         }
     }
 

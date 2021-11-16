@@ -34,7 +34,7 @@ public class StageInitializer implements ApplicationListener<StageReadyEvent> {
             fxmlLoader.setControllerFactory(aClass -> applicationContext.getBean(aClass));
             Parent parent = fxmlLoader.load();
             Stage stage = event.getStage();
-            stage.setScene(new Scene(parent, 1500, 800));
+            stage.setScene(new Scene(parent, 1500, 1000));
             stage.setTitle(applicationTitle);
             stage.setResizable(false);
             stage.show();

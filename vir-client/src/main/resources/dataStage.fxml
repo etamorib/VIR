@@ -9,42 +9,57 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import tornadofx.control.DateTimePicker?>
+<?import javafx.scene.chart.NumberAxis?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vir.bm.virclient.DataStageController"
             prefHeight="400.0" prefWidth="600.0">
 
     <VBox layoutX="50">
-        <DateTimePicker fx:id="dateTimePicker">
+
+        <Label text="First date"/>
+        <DateTimePicker fx:id="firstDatePicker">
             <dateTimeValue>
 
             </dateTimeValue>
         </DateTimePicker>
 
-        <LineChart prefHeight="230" prefWidth="1200" fx:id="cpu">
+        <Label text="Second date"/>
+        <DateTimePicker fx:id="secondDatePicker">
+            <dateTimeValue>
+
+            </dateTimeValue>
+        </DateTimePicker>
+
+
+        <Button fx:id="select" text="Select" onMouseClicked="#fetchData">
+        </Button>
+        <Label fx:id="noRecordLabel" text="0 data found between this interval" visible="false"/>
+
+        <LineChart prefHeight="230" prefWidth="1200" fx:id="cpu" title="CPU usage">
             <xAxis>
-                <CategoryAxis label="Time"/>
+                <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
             <yAxis>
-                <CategoryAxis label="Load"/>
+                <NumberAxis label="Load %"/>
             </yAxis>
         </LineChart>
 
-        <LineChart prefHeight="230" fx:id="memory">
+        <LineChart prefHeight="230" fx:id="memory" title="RAM usage">
             <xAxis>
-                <CategoryAxis label="Time"/>
+                <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
             <yAxis>
-                <CategoryAxis label="Load"/>
+                <NumberAxis label="Load %"/>
             </yAxis>
         </LineChart>
 
-        <LineChart prefHeight="230" fx:id="disk">
+        <LineChart prefHeight="230" fx:id="disk" title="Disk usage">
             <xAxis>
-                <CategoryAxis label="Time"/>
+                <CategoryAxis  tickLabelsVisible="false" tickMarkVisible="false"/>
             </xAxis>
             <yAxis>
-                <CategoryAxis label="Load"/>
+                <NumberAxis label="Load %"/>
             </yAxis>
         </LineChart>
     </VBox>

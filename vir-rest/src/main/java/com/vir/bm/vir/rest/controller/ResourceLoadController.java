@@ -2,7 +2,6 @@ package com.vir.bm.vir.rest.controller;
 
 import com.vir.bm.vir.rest.model.ResourceLoad;
 import com.vir.bm.vir.rest.repository.IResourceLoadRepository;
-import com.vir.bm.vir.rest.utils.ResourceLoadNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,7 +10,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Slf4j
 @RestController
