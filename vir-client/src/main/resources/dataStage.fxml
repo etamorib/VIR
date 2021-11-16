@@ -8,12 +8,18 @@
 
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import tornadofx.control.DateTimePicker?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vir.bm.virclient.DataStageController"
             prefHeight="400.0" prefWidth="600.0">
 
     <VBox layoutX="50">
+        <DateTimePicker fx:id="dateTimePicker">
+            <dateTimeValue>
+
+            </dateTimeValue>
+        </DateTimePicker>
 
         <LineChart prefHeight="230" prefWidth="1200" fx:id="cpu">
             <xAxis>

@@ -10,7 +10,9 @@ public class DiskUsageMonitor {
     File root = new File("/");
 
     public double getInfo() {
-        return (double) root.getUsableSpace();
+        long total = root.getTotalSpace();
+        long free = root.getFreeSpace();
+        return (double) free / total;
     }
 
 }

@@ -7,6 +7,9 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.vir.bm.virclient.DashboardStageController"
@@ -27,10 +30,17 @@
         </Button>
         <VBox>
             <ProgressBar fx:id="progressBar" prefWidth="300" prefHeight="50">
-
             </ProgressBar>
-
         </VBox>
+
+        <LineChart prefHeight="350" prefWidth="1200" fx:id="resourceChart" title="Live resource load">
+            <xAxis>
+                <CategoryAxis label="Time"/>
+            </xAxis>
+            <yAxis>
+                <NumberAxis label="Load (%)"/>
+            </yAxis>
+        </LineChart>
     </VBox>
 
 </AnchorPane>

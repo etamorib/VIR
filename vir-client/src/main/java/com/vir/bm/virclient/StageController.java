@@ -26,10 +26,10 @@ public class StageController implements Initializable {
     public Pane contentPane;
     @FXML
     private AnchorPane opacityPane,drawerPane;
+    private AnchorPane dashboard, data;
 
     @FXML
     private Label drawerImage;
-
 
     @Value("classpath:/dashboardStage.fxml")
     private Resource dashboardStage;
@@ -44,8 +44,9 @@ public class StageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        setContentResource(dashboardStage);
+        dashboard = setStage(dashboardStage);
+        data = setStage(dataStage);
+        setContentResource(dashboard);
 
         opacityPane.setVisible(false);
 
@@ -89,31 +90,39 @@ public class StageController implements Initializable {
         });
     }
 
-    private void setContentResource(Resource resource) {
+    private void setContentResource(AnchorPane content) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(resource.getURL());
-            fxmlLoader.setControllerFactory(aClass -> applicationContext.getBean(aClass));
-            AnchorPane content = fxmlLoader.load();
             contentPane.getChildren().setAll(content);
-        } catch (IOException | NullPointerException e) {
+        } catch (NullPointerException e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
     }
 
     public void btnDashboardEvent(ActionEvent actionEvent) {
-        setContentResource(dashboardStage);
+        setContentResource(dashboard);
     }
 
     public void btnDataEvent(ActionEvent actionEvent) {
-        setContentResource(dataStage);
+        setContentResource(data);
     }
 
     public void imgHomeClickEvent(MouseEvent mouseEvent) {
-        setContentResource(dashboardStage);
+        setContentResource(dashboard);
     }
 
     public void imgDataClickedEvent(MouseEvent mouseEvent) {
-        setContentResource(dataStage);
+        setContentResource(data);
+    }
+
+    private AnchorPane setStage(Resource resource) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(resource.getURL());
+            fxmlLoader.setControllerFactory(aClass -> applicationContext.getBean(aClass));
+            return fxmlLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

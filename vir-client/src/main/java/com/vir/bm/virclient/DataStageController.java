@@ -9,6 +9,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import tornadofx.control.DateTimePicker;
 
 import java.util.function.Consumer;
 
@@ -21,6 +22,8 @@ public class DataStageController implements Consumer<ResourceLoad> {
     public LineChart<String, Double> memory;
     @FXML
     public LineChart<String, Double> disk;
+    @FXML
+    public DateTimePicker dateTimePicker;
     private WebClientResourceClient webClientResourceClient;
     private ObservableList<XYChart.Data<String, Double>> seriesData = FXCollections.observableArrayList();
 
@@ -36,7 +39,6 @@ public class DataStageController implements Consumer<ResourceLoad> {
         ObservableList<XYChart.Series<String, Double>> cpuData = FXCollections.observableArrayList();
         cpuData.add(new XYChart.Series<>(seriesData));
         cpu.setData(cpuData);
-        System.out.println(webClientResourceClient);
 
     }
 
